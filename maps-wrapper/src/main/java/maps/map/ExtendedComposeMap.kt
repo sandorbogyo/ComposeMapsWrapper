@@ -55,7 +55,7 @@ import kotlin.coroutines.suspendCoroutine
  * @param content the content of the map
  */
 @Composable
-fun ExtendedMap(
+fun ExtendedComposeMap(
     modifier: Modifier = Modifier,
     cameraPositionState: CameraPositionState = rememberCameraPositionState(),
     contentDescription: String? = null,
