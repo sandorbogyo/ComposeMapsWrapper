@@ -2,6 +2,7 @@ package maps.wrapper;
 
 import androidx.annotation.NonNull;
 
+
 public class GroundOverlay {
     com.huawei.hms.maps.model.GroundOverlay huawei;
     com.google.android.gms.maps.model.GroundOverlay google;
@@ -27,6 +28,31 @@ public class GroundOverlay {
     public void setTransparency(float value) {
         if (google != null) google.setTransparency(value);
         if (huawei != null) huawei.setTransparency(value);
+    }
+
+    public void setBearing(float value) {
+        if (google != null) google.setBearing(value);
+        if (huawei != null) huawei.setBearing(value);
+    }
+
+    public final void setPosition(LatLng value) {
+        if (google != null) google.setPosition(value.google);
+        if (huawei != null) huawei.setPosition(value.huawei);
+    }
+
+    public final void setDimensions(float value) {
+        if (google != null) google.setDimensions(value);
+        if (huawei != null) huawei.setDimensions(value);
+    }
+
+    public final void setDimensions(float value1, float value2) {
+        if (google != null) google.setDimensions(value1, value2);
+        if (huawei != null) huawei.setDimensions(value1, value2);
+    }
+
+    public final void setPositionFromBounds(LatLngBounds value) {
+        if (google != null) google.setPositionFromBounds(value.google);
+        if (huawei != null) huawei.setPositionFromBounds(value.huawei);
     }
 
     public float getTransparency() {

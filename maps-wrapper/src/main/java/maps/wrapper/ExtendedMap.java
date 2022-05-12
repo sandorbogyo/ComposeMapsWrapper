@@ -106,6 +106,21 @@ public class ExtendedMap {
         boolean onMyLocationButtonClick();
     }
 
+    public interface OnMyLocationClickListener {
+        void onMyLocationClick(Location location);
+    }
+
+    public interface OnPoiClickListener {
+        void onPoiClick(PointOfInterest pointOfInterest);
+    }
+
+    public interface OnIndoorStateChangeListener {
+        void onIndoorBuildingFocused();
+        void onIndoorLevelActivated(IndoorBuilding indoorBuilding);
+    }
+
+
+
     public interface OnMyLocationChangeListener{
         void onMyLocationChange(Location location);
     }
@@ -302,6 +317,14 @@ public class ExtendedMap {
     public void setMyLocationEnabled(boolean value) {
         if (isHuawei()) huaweiMap.setMyLocationEnabled(value);
         if (isGoogle()) googleMap.setMyLocationEnabled(value);
+    }
+
+    public void setMapStyle(MapStyleOptions style) {
+        if (isHuawei()) googleMap.setMapStyle(style.google);
+        if (isGoogle()) {
+            assert huaweiMap != null;
+            huaweiMap.setMapStyle(style.huawei);
+        }
     }
 
     public boolean isMyLocationEnabled() {
@@ -762,6 +785,72 @@ public class ExtendedMap {
                 @Override
                 public void onMapLoaded() {
                     listener.onMapLoaded();
+                }
+            });
+        }
+    }
+
+    public void setOnIndoorStateChangeListener(final OnIndoorStateChangeListener listener) {
+        if (isGoogle()) {
+            googleMap.setOnIndoorStateChangeListener(new GoogleMap.OnIndoorStateChangeListener() {
+                @Override
+                public void onIndoorBuildingFocused() {
+                    listener.onIndoorBuildingFocused();
+                }
+                @Override
+                public void onIndoorLevelActivated(com.google.android.gms.maps.model.IndoorBuilding indoorBuilding) {
+                    listener.onIndoorLevelActivated(new IndoorBuilding(indoorBuilding, null));
+                }
+            });
+        }
+        if (isHuawei()) {
+            huaweiMap.setOnIndoorStateChangeListener(new HuaweiMap.OnIndoorStateChangeListener() {
+                @Override
+                public void onIndoorBuildingFocused() {
+                    listener.onIndoorBuildingFocused();
+                }
+                @Override
+                public void onIndoorLevelActivated(com.huawei.hms.maps.model.IndoorBuilding indoorBuilding) {
+                    listener.onIndoorLevelActivated(new IndoorBuilding(null, indoorBuilding));
+                }
+            });
+        }
+    }
+
+    public void setOnPoiClickListener(final OnPoiClickListener listener) {
+        if (isGoogle()) {
+            googleMap.setOnPoiClickListener(new GoogleMap.OnPoiClickListener() {
+                @Override
+                public void onPoiClick(com.google.android.gms.maps.model.PointOfInterest pointOfInterest) {
+                    listener.onPoiClick(new PointOfInterest(pointOfInterest, null));
+                }
+            });
+        }
+        if (isHuawei()) {
+            huaweiMap.setOnPoiClickListener(new HuaweiMap.OnPoiClickListener() {
+                @Override
+                public void onPoiClick(com.huawei.hms.maps.model.PointOfInterest pointOfInterest) {
+                    listener.onPoiClick(new PointOfInterest(null, pointOfInterest));
+                }
+            });
+        }
+    }
+
+
+    public void setOnMyLocationClickListener(final OnMyLocationClickListener listener) {
+        if (isGoogle()) {
+            googleMap.setOnMyLocationClickListener(new GoogleMap.OnMyLocationClickListener() {
+                @Override
+                public void onMyLocationClick(Location location) {
+                    listener.onMyLocationClick(location);
+                }
+            });
+        }
+        if (isHuawei()) {
+            huaweiMap.setOnMyLocationClickListener(new HuaweiMap.OnMyLocationClickListener() {
+                @Override
+                public void onMyLocationClick(Location location) {
+                    listener.onMyLocationClick(location);
                 }
             });
         }

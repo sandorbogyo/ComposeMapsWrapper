@@ -138,6 +138,45 @@ public class PolygonOptions {
         return this;
     }
 
+    public List<List<LatLng>> getHoles() {
+
+        List<List<LatLng>> list = new ArrayList<>();
+        if (google != null) {
+            List<List<com.google.android.gms.maps.model.LatLng>> gList = google.getHoles();
+            for (List<com.google.android.gms.maps.model.LatLng> item : gList) {
+                List<LatLng> listInner = new ArrayList<>();
+                for (com.google.android.gms.maps.model.LatLng itemInner : item) {
+                    listInner.add(new LatLng(itemInner.latitude, itemInner.longitude));
+                }
+                list.add(listInner);
+            }
+        }
+        if (huawei != null) {
+            List<List<com.huawei.hms.maps.model.LatLng>> hList = huawei.getHoles();
+            for (List<com.huawei.hms.maps.model.LatLng> item : hList) {
+                List<LatLng> listInner = new ArrayList<>();
+                for (com.huawei.hms.maps.model.LatLng itemInner : item) {
+                    listInner.add(new LatLng(itemInner.latitude, itemInner.longitude));
+                }
+                list.add(listInner);
+            }
+        }
+        return list;
+    }
+
+
+    public final PolygonOptions strokePattern(List<PatternItem> value) {
+        List<com.huawei.hms.maps.model.PatternItem> hList = new ArrayList<>();
+        List<com.google.android.gms.maps.model.PatternItem> gList = new ArrayList<>();
+        for (PatternItem item : value) {
+            hList.add(item.hPattern);
+            gList.add(item.gPattern);
+        }
+        huawei = huawei.strokePattern(hList);
+        google = google.strokePattern(gList);
+        return this;
+    }
+
 
     public final PolygonOptions fillColor(int value) {
         huawei = huawei.fillColor(value);

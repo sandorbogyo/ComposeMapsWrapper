@@ -1,15 +1,5 @@
 package maps.wrapper;
 
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.os.Bundle;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -57,7 +47,7 @@ public class SupportMapFragment extends Fragment {
         return mapFragment instanceof com.huawei.hms.maps.SupportMapFragment;
     }
 
-    @Override
+/*    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_container, container, false);
@@ -82,7 +72,7 @@ public class SupportMapFragment extends Fragment {
             e.printStackTrace();
         }
         array.recycle();
-    }
+    }*/
 
 
 }

@@ -26,6 +26,11 @@ public class Marker {
         return latLng;
     }
 
+    public void setDraggable(boolean draggable) {
+        if (google != null) google.setDraggable(draggable);
+        if (huawei != null) huawei.setDraggable(draggable);
+    }
+
     public void setIcon(@Nullable BitmapDescriptor value) {
         if (google != null) google.setIcon(value.google);
         if (huawei != null) huawei.setIcon(value.huawei);
@@ -34,6 +39,11 @@ public class Marker {
     public void setAnchor(float x, float y) {
         if (google != null) google.setAnchor(x, y);
         if (huawei != null) huawei.setMarkerAnchor(x, y);
+    }
+
+    public void setInfoWindowAnchor(float x, float y) {
+        if (google != null) google.setInfoWindowAnchor(x, y);
+        if (huawei != null) huawei.setInfoWindowAnchor(x, y);
     }
 
     public void setTitle(@Nullable String value) {

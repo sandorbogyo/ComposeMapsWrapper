@@ -5,7 +5,7 @@ import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-
+import maps.wrapper.R;
 import com.google.android.gms.maps.GoogleMap;
 import com.huawei.hms.maps.HuaweiMap;
 

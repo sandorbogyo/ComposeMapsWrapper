@@ -15,9 +15,20 @@ public class TileOverlay {
         if (this.huawei != null) huawei.setFadeIn(value);
     }
 
+
     public final void setTransparency(float value) {
         if (this.google != null) google.setTransparency(value);
         if (this.huawei != null) huawei.setTransparency(value);
+    }
+
+    public final void setVisible(boolean value) {
+        if (this.google != null) google.setVisible(value);
+        if (this.huawei != null) huawei.setVisible(value);
+    }
+
+    public final void remove() {
+        if (google != null) google.remove();
+        if (huawei != null) huawei.remove();
     }
 
     public final float getZIndex() {

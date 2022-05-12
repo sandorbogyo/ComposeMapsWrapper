@@ -1,7 +1,6 @@
 package maps.wrapper;
 
-import com.huawei.hms.maps.model.PatternItem;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class CircleOptions {
@@ -44,8 +43,15 @@ public class CircleOptions {
         return this;
     }
 
-    public CircleOptions strokePattern(List<PatternItem> var1) {
-        //TODO
+    public CircleOptions strokePattern(List<PatternItem> pattern) {
+        List<com.huawei.hms.maps.model.PatternItem> hList = new ArrayList<>();
+        List<com.google.android.gms.maps.model.PatternItem> gList = new ArrayList<>();
+        for (PatternItem item : pattern) {
+            hList.add(item.hPattern);
+            gList.add(item.gPattern);
+        }
+        if (google != null) google.strokePattern(gList);
+        if (huawei != null) huawei.strokePattern(hList);
         return this;
     }
 

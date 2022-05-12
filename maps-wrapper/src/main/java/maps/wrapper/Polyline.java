@@ -30,6 +30,11 @@ public class Polyline {
         return -1;
     }
 
+    public void setGeodesic(boolean value) {
+        if (google != null) google.setGeodesic(value);
+        if (huawei != null) huawei.setGeodesic(value);
+    }
+
     public void setStartCap(@NonNull Cap value) {
         if (google != null) google.setStartCap(value.gCap);
         if (huawei != null) huawei.setStartCap(value.hCap);
@@ -74,7 +79,17 @@ public class Polyline {
             if (google != null) google.setPattern(gList);
             if (huawei != null) huawei.setPattern(hList);
         }
+    }
 
+    public void setPoints(List<LatLng> value) {
+        List<com.huawei.hms.maps.model.LatLng> hList = new ArrayList<>();
+        List<com.google.android.gms.maps.model.LatLng> gList = new ArrayList<>();
+        for (LatLng item : value) {
+            hList.add(new com.huawei.hms.maps.model.LatLng(item.latitude, item.longitude));
+            gList.add(new com.google.android.gms.maps.model.LatLng(item.latitude, item.longitude));
+        }
+        if (google != null) google.setPoints(gList);
+        if (huawei != null) huawei.setPoints(hList);
     }
 
     public List<PatternItem> getPatternItem() {
@@ -93,6 +108,12 @@ public class Polyline {
         }
         return list;
     }
+
+    public void setZIndex(float value) {
+        if (google != null) google.setZIndex(value);
+        if (huawei != null) huawei.setZIndex(value);
+    }
+
 
     public void setWidth(float value) {
         if (google != null) google.setWidth(value);

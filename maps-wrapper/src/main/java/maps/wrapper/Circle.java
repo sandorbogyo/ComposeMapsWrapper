@@ -141,7 +141,6 @@ public class Circle {
     public void setClickable(boolean value) {
         if (hmsCircle != null) hmsCircle.setClickable(value);
         if (gmsCircle != null) gmsCircle.setClickable(value);
-
     }
 
     public boolean isClickable() {

@@ -40,6 +40,12 @@ public class GroundOverlayOptions {
         return this;
     }
 
+    public final GroundOverlayOptions visible(boolean value) {
+        if (google != null) google = google.visible(value);
+        if (huawei != null) huawei = huawei.visible(value);
+        return this;
+    }
+
     public final GroundOverlayOptions anchor(float value1, float value2) {
         if (google != null) google = google.anchor(value1, value2);
         if (huawei != null) huawei = huawei.anchor(value1, value2);
@@ -49,6 +55,12 @@ public class GroundOverlayOptions {
     public final GroundOverlayOptions bearing(float value) {
         if (google != null) google = google.bearing(value);
         if (huawei != null) huawei = huawei.bearing(value);
+        return this;
+    }
+
+    public final GroundOverlayOptions transparency(float transparency) {
+        if (google != null) google = google.transparency(transparency);
+        if (huawei != null) huawei = huawei.transparency(transparency);
         return this;
     }
 

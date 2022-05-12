@@ -59,6 +59,31 @@ public class PolylineOptions {
         return this;
     }
 
+    public PolylineOptions startCap(Cap value) {
+        hOptions = hOptions.startCap(value.hCap);
+        gOptions = gOptions.startCap(value.gCap);
+        return this;
+    }
+
+    public PolylineOptions endCap(Cap value) {
+        hOptions = hOptions.endCap(value.hCap);
+        gOptions = gOptions.endCap(value.gCap);
+        return this;
+    }
+
+    public PolylineOptions pattern(List<PatternItem> pattern) {
+        List<com.huawei.hms.maps.model.PatternItem> hList = new ArrayList<>();
+        List<com.google.android.gms.maps.model.PatternItem> gList = new ArrayList<>();
+        for (maps.wrapper.PatternItem item : pattern) {
+            hList.add(item.hPattern);
+            gList.add(item.gPattern);
+        }
+        hOptions = hOptions.pattern(hList);
+        gOptions = gOptions.pattern(gList);
+        return this;
+    }
+
+
 
     public PolylineOptions geodesic(boolean value) {
         hOptions = hOptions.geodesic(value);
