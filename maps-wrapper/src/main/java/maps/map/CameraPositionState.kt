@@ -53,7 +53,7 @@ inline fun rememberCameraPositionState(
  * @param position the initial camera position
  */
 class CameraPositionState(
-    position: CameraPosition = CameraPosition.builder().target(LatLng(0.0,0.0)).bearing(0F).tilt(0F).zoom(0F).build()
+    position: CameraPosition = CameraPosition.fromLatLngZoom(LatLng(0.0,0.0), 0F)
 ) {
 
     /**
